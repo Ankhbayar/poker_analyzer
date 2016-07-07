@@ -1,1 +1,1 @@
-web: gunicorn poker_reader.wsgi --log-file -
+web: gunicorn poker_reader.wsgi logger.log

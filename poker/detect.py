@@ -1,6 +1,7 @@
 # coding: utf-8
 
-class PokenHandAnalyzer(object):
+
+class PokerHandAnalyzer(object):
     # Static VARIABLES
     SUIT_S = "S"
     SUIT_H = "H"
@@ -281,16 +282,16 @@ class PokenHandAnalyzer(object):
         return True
 
 
-pa = PokenHandAnalyzer()
+pa = PokerHandAnalyzer()
 
 
 TEST_CASES = [
     {
-        "hand_type": PokenHandAnalyzer.HAND_TYPE_ROYAL_FLUSH,
+        "hand_type": PokerHandAnalyzer.HAND_TYPE_ROYAL_FLUSH,
         "hand_line": "H1 h13 h12 h11 h10",
     },
     {
-        "hand_type": PokenHandAnalyzer.HAND_TYPE_FLUSH,
+        "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
         "hand_line": "C1 C6 C5 C4 C3",
     },
     {
@@ -304,11 +305,11 @@ TEST_CASES = [
         "hand_line": "J4 C6 C5 C4 C3",
     },
     {
-        "hand_type": PokenHandAnalyzer.HAND_TYPE_FLUSH,
+        "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
         "hand_line": "H10 H11 H5 H4 H3",
     },
     {
-        "hand_type": PokenHandAnalyzer.HAND_TYPE_FLUSH,
+        "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
         "hand_line": "H10 H11 H5 H4 H3",
     },
 ]
