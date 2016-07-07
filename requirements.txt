@@ -1,9 +1,10 @@
 django
 
-dj-database-url
+# dj-database-url
 dj-static
-django-toolbelt
+# django-toolbelt
 gunicorn
 python-dateutil==1.5
 requests==2.10.0
 static3==0.7.0
+whitenoise==2.0.6
