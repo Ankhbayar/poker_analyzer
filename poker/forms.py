@@ -15,6 +15,7 @@ class PokerHandDataForm(forms.Form):
         super(PokerHandDataForm, self).__init__(*args, **kwargs)
         self.fields["hand_line"].widget.attrs["class"] = "form-control"
         self.fields["hand_line"].widget.attrs["place-holder"] = "Input"
+        self.fields["hand_line"].widget.attrs["AUTOCOMPLETE"] = "OFF"
         self.fields["lang_code"].widget.attrs["class"] = "form-control"
 
     def clean_hand_line(self):

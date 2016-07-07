@@ -41,6 +41,19 @@ class PokerHandAnalyzer(object):
     HAND_TYPE_ONE_PAIR = "one_pair"
     HAND_TYPE_HIGH_CARD = "high_card"
 
+    HAND_TYPE_SORT_ORDER = [
+        HAND_TYPE_ROYAL_FLUSH,
+        HAND_TYPE_STRAIGHT_FLUSH,
+        HAND_TYPE_4_OFKIND,
+        HAND_TYPE_FULL_HOUSE,
+        HAND_TYPE_FLUSH,
+        HAND_TYPE_STRAIGHT,
+        HAND_TYPE_3_OFKIND,
+        HAND_TYPE_TWO_PAIR,
+        HAND_TYPE_ONE_PAIR,
+        HAND_TYPE_HIGH_CARD,
+    ]
+
     LABEL_TRANSLATE = {
         "en": {
             HAND_TYPE_ROYAL_FLUSH: "Royal Flush",
@@ -130,6 +143,10 @@ class PokerHandAnalyzer(object):
     def get_hand_type(self):
         lang_data = self.LABEL_TRANSLATE.get(self.lang_code)
         return lang_data.get(self.hand_type, self.hand_type)
+
+    def get_hand_sort_order(self):
+        index = self.HAND_TYPE_SORT_ORDER.index(self.hand_type)
+        return index
 
     def is_valid(self, hand_line):
         return self.is_valid

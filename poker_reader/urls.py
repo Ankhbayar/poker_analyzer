@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from poker.views import TaskOneView
+from poker.views import task_two
 
 urlpatterns = [
     url(r'^$', TaskOneView.as_view(), name='task_one'),
+    url(r'^api$', task_two, name='task_two'),
 ]

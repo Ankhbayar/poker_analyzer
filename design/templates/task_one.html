@@ -4,6 +4,7 @@
 {% block content %}
   <div class="row">
     <div class="col-md-6">
+      <h2>Task One</h2>
       <form method="POST">{% csrf_token %}
         <div class="form-group {% if form.lang_code.errors %} has-error {% endif %}">
           {{form.lang_code.label_tag}}
@@ -30,6 +31,15 @@
         {% endif %}
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
+      <hr/>
+      <h2>Task Two</h2>
+      POST UI tools: <a href="https://www.getpostman.com/" target="_blank">POSTMAN</a><br/>
+      <pre>Api URL: {{task_two_url}}
+Method: "POST"
+Example:
+$ curl -X POST {{task_two_url}} -d '{"lang_code": "en","cards": ["H1 H13 H12 H11 H10", "H9 C9 S9 H2 C2"]}' 
+      </pre>
+
     </div>
     <div class="col-md-6"><pre>ストレートフラッシュ: 同じスートで数字が連続する5枚のカードで構成されている場合
 例: C7 C6 C5 C4 C3
@@ -68,5 +78,6 @@ H9 C9 H1 D12 D10
 C13 D12 C11 H8 H7</pre>
     </div>
   </div> <!-- row -->
+
 
 {% endblock %}
