@@ -1,4 +1,4 @@
-
+# coding: utf-8
 
 class PokenHandAnalyzer(object):
     # Static VARIABLES
@@ -40,6 +40,33 @@ class PokenHandAnalyzer(object):
     HAND_TYPE_ONE_PAIR = "one_pair"
     HAND_TYPE_HIGH_CARD = "high_card"
 
+    LABEL_TRANSLATE = {
+        "en": {
+            HAND_TYPE_ROYAL_FLUSH: "Royal Flush",
+            HAND_TYPE_STRAIGHT_FLUSH: "Straight Flush",
+            HAND_TYPE_4_OFKIND: "Four Of Kind",
+            HAND_TYPE_FULL_HOUSE: "Full House",
+            HAND_TYPE_FLUSH: "Flush",
+            HAND_TYPE_STRAIGHT: "Straight",
+            HAND_TYPE_3_OFKIND: "Tree Of Kind",
+            HAND_TYPE_TWO_PAIR: "Two Pair",
+            HAND_TYPE_ONE_PAIR: "One Pair",
+            HAND_TYPE_HIGH_CARD: "High Card",
+        },
+        "jp": {
+            HAND_TYPE_ROYAL_FLUSH: "ロイヤルフラッシュ",
+            HAND_TYPE_STRAIGHT_FLUSH: "ストレートフラッシュ",
+            HAND_TYPE_4_OFKIND: "フォー・オブ・ア・カインド",
+            HAND_TYPE_FULL_HOUSE: "フルハウス",
+            HAND_TYPE_FLUSH: "フラッシュ",
+            HAND_TYPE_STRAIGHT: "ストレート",
+            HAND_TYPE_3_OFKIND: "スリー・オブ・ア・カインド",
+            HAND_TYPE_TWO_PAIR: "ツーペア",
+            HAND_TYPE_ONE_PAIR: "ワンペア",
+            HAND_TYPE_HIGH_CARD: "ハイカード",
+        },
+    }
+
     # Internal Variables
     cards = []
     hand_card_count = 0
@@ -48,10 +75,13 @@ class PokenHandAnalyzer(object):
     card_numbers = []
     hand_line = ""
     parse_error_msg = ""
+    lang_code = "jp"
 
-    def __init__(self, hand_line=None):
+    def __init__(self, hand_line=None, lang_code=None):
         if hand_line and self.parse(hand_line) is False:
             raise Exception("Invalid CARD")
+        if lang_code:
+            self.lang_code = lang_code
 
     def reset(self):
         self.is_valid = None
@@ -80,7 +110,7 @@ class PokenHandAnalyzer(object):
                 return self.is_valid
             if card_number not in self.CARD_NUMBER_ORDER:
                 self.is_valid = False
-                self.parse_error_msg = "Invalid Card Number %s only %r " % (card_number, self.CARD_SUIT_ORDER)
+                self.parse_error_msg = "Invalid Card Number %s only %r " % (card_number, self.CARD_NUMBER_ORDER)
                 return self.is_valid
             self.card_numbers.append(card_number)
             self.card_suits.append(card_suit)
@@ -95,6 +125,10 @@ class PokenHandAnalyzer(object):
         self.hand_type = self.detect_hand_type()
         self.is_valid = True
         return self.is_valid
+
+    def get_hand_type(self):
+        lang_data = self.LABEL_TRANSLATE.get(self.lang_code)
+        return lang_data.get(self.hand_type, self.hand_type)
 
     def is_valid(self, hand_line):
         return self.is_valid
@@ -194,7 +228,7 @@ class PokenHandAnalyzer(object):
         card_index_lst = []
         for card_number in self.card_numbers:
             c_index = self.CARD_NUMBER_ORDER.index(card_number)
-            card_index_lst.append(c_index)
+            card_index_lst.append("%02d" % c_index)
         card_index_lst.sort()
         card_result = "".join(card_index_lst)
         try:
