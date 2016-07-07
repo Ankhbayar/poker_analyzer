@@ -1,0 +1,7 @@
+{
+  "name": "Poker Hand Analyzer",
+  "description": "Poker Hand Analyzer",
+  "image": "heroku/python",
+  "keywords": ["python", "django", "poker" ],
+  "addons": []
+}
