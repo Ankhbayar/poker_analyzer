@@ -299,48 +299,48 @@ class PokerHandAnalyzer(object):
         return True
 
 
-pa = PokerHandAnalyzer()
+# pa = PokerHandAnalyzer()
 
 
-TEST_CASES = [
-    {
-        "hand_type": PokerHandAnalyzer.HAND_TYPE_ROYAL_FLUSH,
-        "hand_line": "H1 h13 h12 h11 h10",
-    },
-    {
-        "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
-        "hand_line": "C1 C6 C5 C4 C3",
-    },
-    {
-        "is_valid": False,
-        "error_msg": "Duplicate",
-        "hand_line": "C4 C6 C5 C4 C3",
-    },
-    {
-        "is_valid": False,
-        "error_msg": "Invalid Card Suit",
-        "hand_line": "J4 C6 C5 C4 C3",
-    },
-    {
-        "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
-        "hand_line": "H10 H11 H5 H4 H3",
-    },
-    {
-        "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
-        "hand_line": "H10 H11 H5 H4 H3",
-    },
-]
+# TEST_CASES = [
+#     {
+#         "hand_type": PokerHandAnalyzer.HAND_TYPE_ROYAL_FLUSH,
+#         "hand_line": "H1 h13 h12 h11 h10",
+#     },
+#     {
+#         "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
+#         "hand_line": "C1 C6 C5 C4 C3",
+#     },
+#     {
+#         "is_valid": False,
+#         "error_msg": "Duplicate",
+#         "hand_line": "C4 C6 C5 C4 C3",
+#     },
+#     {
+#         "is_valid": False,
+#         "error_msg": "Invalid Card Suit",
+#         "hand_line": "J4 C6 C5 C4 C3",
+#     },
+#     {
+#         "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
+#         "hand_line": "H10 H11 H5 H4 H3",
+#     },
+#     {
+#         "hand_type": PokerHandAnalyzer.HAND_TYPE_FLUSH,
+#         "hand_line": "H10 H11 H5 H4 H3",
+#     },
+# ]
 
-for test_data in TEST_CASES:
-    is_valid = test_data.get("is_valid", True)
-    hand_type = test_data.get("hand_type", None)
-    hand_type = test_data.get("hand_type", None)
-    error_msg = test_data.get("error_msg", None)
-    assert pa.parse(test_data.get("hand_line")) == is_valid, "IS Valid %r" % test_data
-    assert pa.hand_type == hand_type, "Hand Type Must '%s' result %s TD %r" % (hand_type, pa.hand_type, test_data)
-    assert pa.hand_type == hand_type, "Hand Type Must '%s' result %s TD %r" % (hand_type, pa.hand_type, test_data)
-    if error_msg:
-        assert error_msg in pa.parse_error_msg, "Parse Error msg contains '%s' error_msg %s TD %r" % (error_msg, pa.parse_error_msg, test_data)
+# for test_data in TEST_CASES:
+#     is_valid = test_data.get("is_valid", True)
+#     hand_type = test_data.get("hand_type", None)
+#     hand_type = test_data.get("hand_type", None)
+#     error_msg = test_data.get("error_msg", None)
+#     assert pa.parse(test_data.get("hand_line")) == is_valid, "IS Valid %r" % test_data
+#     assert pa.hand_type == hand_type, "Hand Type Must '%s' result %s TD %r" % (hand_type, pa.hand_type, test_data)
+#     assert pa.hand_type == hand_type, "Hand Type Must '%s' result %s TD %r" % (hand_type, pa.hand_type, test_data)
+#     if error_msg:
+#         assert error_msg in pa.parse_error_msg, "Parse Error msg contains '%s' error_msg %s TD %r" % (error_msg, pa.parse_error_msg, test_data)
 
 
 # print "STRAIGHT_FLUSH", pa.parse("C7 C6 C5 C4 C3"), pa.hand_type, pa.parse_error_msg
